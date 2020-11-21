@@ -22,4 +22,18 @@ export function Home(props) {
     );
 } 
 
+async function getBooks() {
+
+    axios.get("http://localhost:9999/api/v1/books")
+        .then(res => {
+            console.log(res);
+            return res;
+        })
+        .catch(e => {
+            console.log(e);
+        });
+
+}
+
+
 // export default Navigation;
