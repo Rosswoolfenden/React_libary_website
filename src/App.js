@@ -10,6 +10,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import {Navigation} from './components/navigation';
 import {Home} from './components/home';
+import {Books} from './components/books';
+import {Account} from './components/account';
 
 function App() {
   return (
@@ -18,8 +20,9 @@ function App() {
       <Navigation/>
       <Switch>
           <Route path="/" children={<Home />} exact />
+          <Route path="/books" children={<Books />} exact />
           <Route path="/addbook" children={<Home />} exact />
-          <Route path="/account" children={<Home />} exact />
+          <Route path="/account" children={<Account />} exact />
       </Switch>
 
     </Router>

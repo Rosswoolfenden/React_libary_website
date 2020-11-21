@@ -3,14 +3,14 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import {Navbar, Nav, NavItem} from 'react-bootstrap';
 
-export function Home(props) {
+export function Books(props) {
     return (
         <div >
             <div className="App">
-                <h1> Public Libary </h1>
+                <h1> Books  </h1>
             </div>
             <div className="Content">
-                <p>Welcome to my public libary app</p>
+                <p>This is the route books</p>
             </div>
             
 
@@ -21,5 +21,3 @@ export function Home(props) {
 
     );
 } 
-
-// export default Navigation;
