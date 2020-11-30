@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import Card from 'react-bootstrap/card';
+import {Button} from  'react-bootstrap';
 
 
 class Books extends React.Component {
@@ -30,9 +31,13 @@ class Books extends React.Component {
         const bookGrid = this.state.books.map(book => {
             return(
                 <div>
-                    <Card style={{width: '18rem'}} >
+                    <Card style={{width: '18rem'}} > 
                         <Card.Body>
                             <Card.Title> {book.title} </Card.Title>
+                            <Card.Text> {book.about} </Card.Text>
+                            <Card.Text> {book.rating} </Card.Text>
+                            <Card.Text> {book.status} </Card.Text>
+                            <Button  variant="success" size="lg" block>Request book</Button>
                         </Card.Body>
                     </Card>
 
