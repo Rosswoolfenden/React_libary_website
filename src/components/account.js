@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import { Link } from 'react-router-dom';
-import {Navbar, Nav, NavItem} from 'react-bootstrap';
+import React from 'react';
+//import axios from 'axios';
+//import { Link } from 'react-router-dom';
+//import {Navbar, Nav, NavItem} from 'react-bootstrap';
 
 export function Account(props) {
     return (

@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import {Navbar, Nav, Button, FormControl, Form, NavDropdown} from 'react-bootstrap';
 
 export function Navigation(props) {
@@ -25,5 +24,3 @@ export function Navigation(props) {
 
     );
 } 
-
-// export default Navigation;
