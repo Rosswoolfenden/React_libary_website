@@ -10,12 +10,6 @@ export function AddBooks(props) {
                 <h1>Add Books</h1>
             </div>
             <div className="Book-Form">
-                {/* <Form>
-                    <Form.Group>
-                        <Form.Label> Book Title </Form.Label>
-                        <Form.Control placeholder="Enter Book Title "> </Form.Control>
-                    </Form.Group>
-                </Form> */}
                 <Form>
                 <Form.Group>
                     <Form.Row>
@@ -58,24 +52,9 @@ export function AddBooks(props) {
                     </Form.Row>
                 </Form.Group>
                 <Button> Add Book! </Button>
-
-
-                    {/* <Form.Group>
-                        <Form.Label> Book Title </Form.Label>
-                        <Form.Control placeholder="Book Title" />
-                    </Form.Group>
-                    <Form.Group>
-                        <Form.Label> Book Title </Form.Label>
-                        <Form.Control placeholder="Book Title" />
-                    </Form.Group> */}
                 </Form>
             </div>
-            
-
         </div>
-       
-        
-        // <p> Hello this is the home page welcome to publ</p>
 
     );
 } 
