@@ -9,6 +9,7 @@ export function Navigation(props) {
             <Nav className="mr-auto">
                 <Nav.Link href="/">Home</Nav.Link>
                 <Nav.Link href="/books">Books</Nav.Link>
+                <Nav.Link href="/addbook"> Add Book </Nav.Link>
                 <NavDropdown href="/account" bg="dark" variant="dark" title="Account" id="basic-nav-dropdown">
                     <NavDropdown> View Books </NavDropdown>
                     <NavDropdown> Settings </NavDropdown>
