@@ -1,23 +1,47 @@
-import React from 'react';
-//import axios from 'axios';
-//import { Link } from 'react-router-dom';
+import React, {useState} from 'react';
+import axios from 'axios';
+import {useForm} from 'react-hook-form';
+
 import {Form, Col, Button} from 'react-bootstrap';
 
 export function AddBooks(props) {
+    const bookFeilds = {
+        title: "",
+        isbn: null,
+        genre: null,
+        pubData: null,
+        ownerId: null,
+        about: null,
+        imageURL: null,
+        rating: null
+    };
+
+    const [book, setBook] = useState(bookFeilds);
+    const [posted, setPosted] = useState("not-posted-book");
+
+    const handleChange = async(event) => {
+      setBook({...book, [event.target.name]: event.target.value});
+    }
+    const submit = () => {
+        
+    }
     return (
         <div >
             <div className="App">
                 <h1>Add Books</h1>
             </div>
+            <div className={posted}>
+                <h2> Succesfully added Book!</h2>
+            </div>
             <div className="Book-Form">
-                <Form>
+                <Form onSubmit={submit}>
                 <Form.Group>
                     <Form.Row>
                         <Form.Label column="lg" lg={2}>
                             Title : 
                         </Form.Label>
                         <Col>
-                            <Form.Control size="lg" type="text" placeholder="Book Title" />
+                            <Form.Control size="lg" type="text" name="title" onChange={handleChange} placeholder="Book Title" />
                         </Col>
                     </Form.Row>
                 </Form.Group>
@@ -27,7 +51,7 @@ export function AddBooks(props) {
                             Author
                         </Form.Label>
                         <Col>
-                            <Form.Control size="lg" type="text" placeholder="Book Author" />
+                            <Form.Control size="lg" type="text" name="author" onChange={handleChange} placeholder="Book Author" />
                         </Col>
                     </Form.Row>
                 </Form.Group>
@@ -37,7 +61,7 @@ export function AddBooks(props) {
                             ISBN
                         </Form.Label>
                         <Col>
-                            <Form.Control size="lg" type="number" placeholder="Book ISBN " />
+                            <Form.Control size="lg" type="number" name="isbn" onChange={handleChange} placeholder="Book ISBN " />
                         </Col>
                     </Form.Row>
                 </Form.Group>
@@ -47,14 +71,18 @@ export function AddBooks(props) {
                             About : 
                         </Form.Label>
                         <Col>
-                            <Form.Control size="lg" as="textarea" rows={5} type="text" placeholder="Tell us about the book?" />
+                            <Form.Control size="lg" as="textarea" rows={5} type="text" name="about" onChange={handleChange} placeholder="Tell us about the book?" />
                         </Col>
                     </Form.Row>
                 </Form.Group>
-                <Button> Add Book! </Button>
+                <Button size="lg" type="submit"> Add Book! </Button>
                 </Form>
             </div>
         </div>
-
     );
+
+    
+
 } 
+
+

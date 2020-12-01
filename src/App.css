@@ -23,7 +23,13 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
-
+.not-posted-book {
+  color: white;
+}
+.posted-book {
+  color: green;
+  text-align: center;
+}
 .App-link {
   color: #61dafb;
 }
