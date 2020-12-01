@@ -23,11 +23,33 @@ export function AddBooks(props) {
         
         setBook({...book, [event.target.name]: intValue});
     }
-    const submit = () => {
-         addBookToDb(book);
-        console.log(book);
-        setPosted("posted-book");
+    const submit = async() => {
+        await addBookToDb(book);
     }
+
+    const addBookToDb = async(data)=> {
+        console.log(data);
+        axios({
+            method: 'post',
+            url: 'http://localhost:9999/api/v1/books/add',
+            data: data,
+            headers: {
+                'Content-Type': 'application/json;charset=UTF-8', 
+                "Access-Control-Allow-Origin": "*"
+            }
+        }).then(res => {
+            console.log(res);
+            alert("Succesfully added book!");
+            setPosted("posted-book");
+        }).catch(e => {
+            // sort out error codes to output what the error is 
+            console.log("THIS DID NOT WORK" + e);
+            alert("Failed to add book");
+        });
+            
+    }
+
+
     return (
         <div >
             <div className="App">
@@ -98,9 +120,14 @@ async function addBookToDb(data) {
             'Content-Type': 'application/json;charset=UTF-8', 
             "Access-Control-Allow-Origin": "*"
         }
-        
     }).then(res => {
         console.log(res);
-    }); 
+        alert("Added")
+        return true;
+    }).catch(e => {
+        // sort out error codes to output what the error is 
+        console.log("THIS DID NOT WORK" + e);
+        return false;
+    });
         
 }
