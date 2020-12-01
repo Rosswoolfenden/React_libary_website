@@ -1,29 +1,32 @@
 import React, {useState} from 'react';
 import axios from 'axios';
-import {useForm} from 'react-hook-form';
 
 import {Form, Col, Button} from 'react-bootstrap';
 
 export function AddBooks(props) {
     const bookFeilds = {
         title: "",
-        isbn: null,
-        genre: null,
-        pubData: null,
-        ownerId: null,
-        about: null,
-        imageURL: null,
-        rating: null
+        isbn: 0,
+        genre: "",
+        about: ""
     };
 
     const [book, setBook] = useState(bookFeilds);
     const [posted, setPosted] = useState("not-posted-book");
 
     const handleChange = async(event) => {
-      setBook({...book, [event.target.name]: event.target.value});
+        setBook({...book, [event.target.name]: event.target.value});
+    }
+
+    const handleIntChange = async(event) =>{
+        let intValue = parseInt(event.target.value);
+        
+        setBook({...book, [event.target.name]: intValue});
     }
     const submit = () => {
-        
+         addBookToDb(book);
+        console.log(book);
+        setPosted("posted-book");
     }
     return (
         <div >
@@ -34,7 +37,7 @@ export function AddBooks(props) {
                 <h2> Succesfully added Book!</h2>
             </div>
             <div className="Book-Form">
-                <Form onSubmit={submit}>
+                <Form >
                 <Form.Group>
                     <Form.Row>
                         <Form.Label column="lg" lg={2}>
@@ -61,7 +64,7 @@ export function AddBooks(props) {
                             ISBN
                         </Form.Label>
                         <Col>
-                            <Form.Control size="lg" type="number" name="isbn" onChange={handleChange} placeholder="Book ISBN " />
+                            <Form.Control size="lg" type="number" name="isbn" onChange={handleIntChange} placeholder="Book ISBN " />
                         </Col>
                     </Form.Row>
                 </Form.Group>
@@ -75,7 +78,7 @@ export function AddBooks(props) {
                         </Col>
                     </Form.Row>
                 </Form.Group>
-                <Button size="lg" type="submit"> Add Book! </Button>
+                <Button size="lg" onClick={submit} > Add Book! </Button>
                 </Form>
             </div>
         </div>
@@ -85,4 +88,19 @@ export function AddBooks(props) {
 
 } 
 
-
+async function addBookToDb(data) {
+    console.log(data);
+    axios({
+        method: 'post',
+        url: 'http://localhost:9999/api/v1/books/add',
+        data: data,
+        headers: {
+            'Content-Type': 'application/json;charset=UTF-8', 
+            "Access-Control-Allow-Origin": "*"
+        }
+        
+    }).then(res => {
+        console.log(res);
+    }); 
+        
+}
