@@ -28,7 +28,6 @@ export function AddBooks(props) {
     }
 
     const addBookToDb = async(data)=> {
-        console.log(data);
         axios({
             method: 'post',
             url: 'http://localhost:9999/api/v1/books/add',
@@ -42,7 +41,6 @@ export function AddBooks(props) {
             alert("Succesfully added book!");
             setPosted("posted-book");
         }).catch(e => {
-            // sort out error codes to output what the error is 
             console.log("THIS DID NOT WORK" + e);
             alert("Failed to add book");
         });

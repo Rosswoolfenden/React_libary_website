@@ -3,39 +3,60 @@ import axios from 'axios';
 
 import {Form, Col, Button, InputGroup } from 'react-bootstrap';
 
+const userFeilds = {
+    firstName: "",
+    lastName: "",
+    email: "",
+    username: "",
+    password: "",
+    adress: "",
+};
+
 export function Register(props) {
-    const userFeilds = {
-        firstName: "",
-        lastName: "",
-        email: "",
-        username: "",
-        password: "",
-        adress: "",
-    };
 
     const [user, setUser] = useState(userFeilds);
     const [posted, setPosted] = useState("not-posted-book");
 
     const handleChange = async(event) => {
-        // setBook({...book, [event.target.name]: event.target.value});
-        console.log([event.target.name] + " : " + [event.target.value]);
         setUser({...user, [event.target.name]: event.target.value});
-      //  console.log("USER: " + user);
     }
 
     const submit = () => {
-        console.log(user);
+        postUser();
     }
+
+
     const postUser = async() => {
-        console.log("poseted");
+        axios({
+            method: 'post',
+            url: 'http://localhost:9999/api/v1/users/register',
+            data: user,
+            headers: {
+                'Content-Type': 'application/json;charset=UTF-8', 
+                "Access-Control-Allow-Origin": "*"
+            }
+        }).then(res => {
+            console.log(res);
+            alert("Succesfully added user!");
+            setPosted("posted-book");
+        }).catch((e) => {
+            console.log(e.response.status);
+            if(e.response.status == 409) {
+                alert("Username already exists, please choose a new one");
+            } else {
+                alert("Internal server errror, try again later");
+            }
+        });
     }
+
+
     return (
         <div >
             <div className="App">
                 <h1>Register User</h1>
             </div>
             <div className={posted}>
-                <h2> Succsefully added new user </h2>
+                <h2> Username already exists, Choose a differnt one please </h2>
             </div>
             <div className="Book-Form">
                 <Form >
