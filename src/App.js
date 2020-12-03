@@ -11,6 +11,7 @@ import {Home} from './components/home';
 import Book from './components/books';
 import {Register} from './components/register';
 import {AddBooks} from './components/addBook';
+import {Login} from './components/login';
 
 function App() {
   return (
@@ -22,6 +23,8 @@ function App() {
           <Route path="/books" children={<Book />} exact />
           <Route path="/addbook" children={<AddBooks />} exact />
           <Route path="/register" children={<Register />} exact />
+          <Route path="/login" children={<Login />} exact/> 
+          
       </Switch>
 
     </Router>

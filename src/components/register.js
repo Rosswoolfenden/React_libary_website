@@ -62,14 +62,14 @@ export function Register(props) {
                 <Form >
                     <Form.Group>
                         <Form.Row>
-                        <Form.Label column="lg" lg={2}> Name : </Form.Label>
-                        <Col>
-                            <Form.Control size="lg" type="text" name="firstName" onChange={handleChange} placeholder="First name" />
-                        </Col>
-                        <Col>
-                            <Form.Control size="lg" type="text" name="lastName" onChange={handleChange} placeholder="Last name" />
-                        </Col>
-                    </Form.Row>
+                            <Form.Label column="lg" lg={2}> Name : </Form.Label>
+                            <Col>
+                                <Form.Control size="lg" type="text" name="firstName" onChange={handleChange} placeholder="First name" />
+                            </Col>
+                            <Col>
+                                <Form.Control size="lg" type="text" name="lastName" onChange={handleChange} placeholder="Last name" />
+                            </Col>
+                        </Form.Row>
                     </Form.Group>
                     
                     <Form.Group>
