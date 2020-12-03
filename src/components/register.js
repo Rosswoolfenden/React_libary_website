@@ -3,14 +3,15 @@ import axios from 'axios';
 
 import {Form, Col, Button} from 'react-bootstrap';
 
-export function AddBooks(props) {
+export function Register(props) {
     const userFeilds = {
         firstName: "",
         lastName: "",
         email: "",
         username: "",
         password: "",
-        role: "basic"
+        role: "basic",
+        
 
     };
 
@@ -18,60 +19,66 @@ export function AddBooks(props) {
     const [posted, setPosted] = useState("not-posted-book");
 
     const handleChange = async(event) => {
-        setBook({...book, [event.target.name]: event.target.value});
+        // setBook({...book, [event.target.name]: event.target.value});
+    }
+
+    const submit = () => {
+        console.log("submit ");
     }
 
     return (
         <div >
             <div className="App">
-                <h1>Add Books</h1>
+                <h1>Register User</h1>
             </div>
             <div className={posted}>
-                <h2> Succesfully added Book!</h2>
+                <h2> Succsefully added new user </h2>
             </div>
             <div className="Book-Form">
                 <Form >
-                <Form.Group>
-                    <Form.Row>
-                        <Form.Label column="lg" lg={2}>
-                            Title : 
-                        </Form.Label>
+                    <Form.Group>
+                        <Form.Row>
+                        <Form.Label column="lg" lg={2}> Name : </Form.Label>
                         <Col>
-                            <Form.Control size="lg" type="text" name="title" onChange={handleChange} placeholder="Book Title" />
+                            <Form.Control size="lg" type="text" name="fn" onChange={handleChange} placeholder="First name" />
+                        </Col>
+                        <Col>
+                            <Form.Control size="lg" type="text" name="sn" onChange={handleChange} placeholder="Last name" />
                         </Col>
                     </Form.Row>
-                </Form.Group>
-                <Form.Group>
-                    <Form.Row>
-                        <Form.Label column="lg" lg={2}>
-                            Author
-                        </Form.Label>
-                        <Col>
-                            <Form.Control size="lg" type="text" name="author" onChange={handleChange} placeholder="Book Author" />
-                        </Col>
-                    </Form.Row>
-                </Form.Group>
-                <Form.Group>
-                    <Form.Row>
-                        <Form.Label column="lg" lg={2}>
-                            ISBN
-                        </Form.Label>
-                        <Col>
-                            <Form.Control size="lg" type="number" name="isbn" onChange={handleIntChange} placeholder="Book ISBN " />
-                        </Col>
-                    </Form.Row>
-                </Form.Group>
-                <Form.Group>
-                    <Form.Row>
-                        <Form.Label column="lg" lg={2}>
-                            About : 
-                        </Form.Label>
-                        <Col>
-                            <Form.Control size="lg" as="textarea" rows={5} type="text" name="about" onChange={handleChange} placeholder="Tell us about the book?" />
-                        </Col>
-                    </Form.Row>
-                </Form.Group>
-                <Button size="lg" onClick={submit} > Add Book! </Button>
+                    </Form.Group>
+                    
+                    <Form.Group>
+                        <Form.Row>
+                            <Form.Label column="lg" lg={2}>
+                                Email : 
+                            </Form.Label>
+                            <Col>
+                                <Form.Control size="lg" type="text" name="email" onChange={handleChange} placeholder="Email" />
+                            </Col>
+                        </Form.Row>
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Row>
+                            <Form.Label column="lg" lg={2}>
+                                Username :
+                            </Form.Label>
+                            <Col>
+                                <Form.Control size="lg" type="text" name="username" onChange={handleChange} placeholder="Usernmae" />
+                            </Col>
+                        </Form.Row>
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Row>
+                            <Form.Label column="lg" lg={2}>
+                                Adress : 
+                            </Form.Label>
+                            <Col>
+                                <Form.Control size="lg" as="textarea" rows={5} type="text" name="about" onChange={handleChange} placeholder="What is your adress?" />
+                            </Col>
+                        </Form.Row>
+                    </Form.Group>
+                    <Button size="lg" onClick={submit} > Add Book! </Button>
                 </Form>
             </div>
         </div>

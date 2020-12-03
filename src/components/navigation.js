@@ -10,11 +10,12 @@ export function Navigation(props) {
                 <Nav.Link href="/">Home</Nav.Link>
                 <Nav.Link href="/books">Books</Nav.Link>
                 <Nav.Link href="/addbook"> Add Book </Nav.Link>
-                <NavDropdown href="/account" bg="dark" variant="dark" title="Account" id="basic-nav-dropdown">
-                    <NavDropdown> View Books </NavDropdown>
-                    <NavDropdown> Settings </NavDropdown>
+                <Nav.Link href="/register"> Register</Nav.Link>
+                {/* <NavDropdown href="/account" bg="light" variant="dark" title="Account" id="basic-nav-dropdown">
+                    <NavDropdown  variant="dark"> View Books </NavDropdown>
+                    <NavDropdown > Settings </NavDropdown>
                     <NavDropdown> Log out </NavDropdown>
-                </NavDropdown>
+                </NavDropdown> */}
             </Nav>
 
             <Form inline>

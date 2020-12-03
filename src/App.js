@@ -9,7 +9,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {Navigation} from './components/navigation';
 import {Home} from './components/home';
 import Book from './components/books';
-import {Account} from './components/account';
+import {Register} from './components/register';
 import {AddBooks} from './components/addBook';
 
 function App() {
@@ -21,7 +21,7 @@ function App() {
           <Route path="/" children={<Home />} exact />
           <Route path="/books" children={<Book />} exact />
           <Route path="/addbook" children={<AddBooks />} exact />
-          <Route path="/account" children={<Account />} exact />
+          <Route path="/register" children={<Register />} exact />
       </Switch>
 
     </Router>
