@@ -11,12 +11,33 @@ const userFeilds = {
 
 export function Login(props){
 
-    
-
     const [user, setUser] = useState(userFeilds);
 
     const handleChange = async(event) => {
         setUser({...user, [event.target.name]: event.target.value});
+    }
+
+    const submit = async(event) => {
+        axios({
+            method: 'post',
+            url: 'http://localhost:9999/api/v1/users/',
+            data: user,
+            headers: {
+                'Content-Type': 'application/json;charset=UTF-8', 
+                "Access-Control-Allow-Origin": "*"
+            }
+        }).then(res => {
+            console.log(res.data);
+            alert("Succesfully Logged in!");
+            
+        }).catch((e) => {
+            console.log(e.response.status);
+            if(e.response.status == 409) {
+                alert("Username already exists, please choose a new one");
+            } else {
+                alert("Internal server errror, try again later");
+            }
+        });
     }
 
     return (
@@ -32,20 +53,20 @@ export function Login(props){
                         <InputGroup.Prepend>
                         <InputGroup.Text>@</InputGroup.Text>
                         </InputGroup.Prepend>
-                            <Form.Control id="inlineFormInputGroupUsername" placeholder="Username" />
+                            <Form.Control id="inlineFormInputGroupUsername" name="username" onChange={handleChange} placeholder="Username" />
                     </InputGroup>
                     </Col>
                      <Col sm={3} className="my-1">
-                        <Form.Label htmlFor="inlineFormInputName" type="password" srOnly> Name </Form.Label>
-                        <Form.Control id="inlineFormInputName" placeholder="Password" />
+                        <Form.Label htmlFor="inlineFormInputName" srOnly> Name </Form.Label>
+                        <Form.Control id="inlineFormInputName" type="password"  name="password" onChange={handleChange} placeholder="Password" />
                     </Col>
                     <Col xs="auto" className="my-1">
-                        <Form.Check type="checkbox" id="autoSizingCheck2" label="Remember me" />
+                    <Button type="submit" onClick={submit} >Submit</Button>
                     </Col>
                     <Col xs="auto" className="my-1">
-                    <Button type="submit">Submit</Button>
-                    </Col>
                     <Link to="/register">   Register </Link>
+                    </Col>
+                    
                 </Form.Row>
                 
                 </Form>
