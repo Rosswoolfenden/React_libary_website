@@ -32,7 +32,7 @@ export function Login(props){
             
         }).catch((e) => {
             console.log(e.response.status);
-            if(e.response.status == 409) {
+            if(e.response.status === 409) {
                 alert("Username already exists, please choose a new one");
             } else {
                 alert("Internal server errror, try again later");

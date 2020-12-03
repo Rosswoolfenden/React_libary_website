@@ -108,24 +108,3 @@ export function AddBooks(props) {
 
 } 
 
-async function addBookToDb(data) {
-    console.log(data);
-    axios({
-        method: 'post',
-        url: 'http://localhost:9999/api/v1/books/add',
-        data: data,
-        headers: {
-            'Content-Type': 'application/json;charset=UTF-8', 
-            "Access-Control-Allow-Origin": "*"
-        }
-    }).then(res => {
-        console.log(res);
-        alert("Added")
-        return true;
-    }).catch(e => {
-        // sort out error codes to output what the error is 
-        console.log("THIS DID NOT WORK" + e);
-        return false;
-    });
-        
-}
