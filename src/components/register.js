@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import axios from 'axios';
 
-import {Form, Col, Button} from 'react-bootstrap';
+import {Form, Col, Button, InputGroup } from 'react-bootstrap';
 
 export function Register(props) {
     const userFeilds = {
@@ -10,9 +10,7 @@ export function Register(props) {
         email: "",
         username: "",
         password: "",
-        role: "basic",
-        
-
+        adress: "",
     };
 
     const [user, setUser] = useState(userFeilds);
@@ -20,12 +18,17 @@ export function Register(props) {
 
     const handleChange = async(event) => {
         // setBook({...book, [event.target.name]: event.target.value});
+        console.log([event.target.name] + " : " + [event.target.value]);
+        setUser({...user, [event.target.name]: event.target.value});
+      //  console.log("USER: " + user);
     }
 
     const submit = () => {
-        console.log("submit ");
+        console.log(user);
     }
-
+    const postUser = async() => {
+        console.log("poseted");
+    }
     return (
         <div >
             <div className="App">
@@ -40,10 +43,10 @@ export function Register(props) {
                         <Form.Row>
                         <Form.Label column="lg" lg={2}> Name : </Form.Label>
                         <Col>
-                            <Form.Control size="lg" type="text" name="fn" onChange={handleChange} placeholder="First name" />
+                            <Form.Control size="lg" type="text" name="firstName" onChange={handleChange} placeholder="First name" />
                         </Col>
                         <Col>
-                            <Form.Control size="lg" type="text" name="sn" onChange={handleChange} placeholder="Last name" />
+                            <Form.Control size="lg" type="text" name="lastName" onChange={handleChange} placeholder="Last name" />
                         </Col>
                     </Form.Row>
                     </Form.Group>
@@ -54,7 +57,7 @@ export function Register(props) {
                                 Email : 
                             </Form.Label>
                             <Col>
-                                <Form.Control size="lg" type="text" name="email" onChange={handleChange} placeholder="Email" />
+                                <Form.Control size="lg" type="email" name="email" onChange={handleChange} placeholder="Email" />
                             </Col>
                         </Form.Row>
                     </Form.Group>
@@ -64,7 +67,13 @@ export function Register(props) {
                                 Username :
                             </Form.Label>
                             <Col>
-                                <Form.Control size="lg" type="text" name="username" onChange={handleChange} placeholder="Usernmae" />
+                                <InputGroup  className="mb-2">
+                                    <InputGroup.Prepend>
+                                        <InputGroup.Text>@</InputGroup.Text>
+                                    </InputGroup.Prepend>
+                                    <Form.Control size="lg" type="text" name="username" onChange={handleChange} placeholder="Username" />
+                                </InputGroup>
+                                
                             </Col>
                         </Form.Row>
                     </Form.Group>
@@ -74,7 +83,17 @@ export function Register(props) {
                                 Adress : 
                             </Form.Label>
                             <Col>
-                                <Form.Control size="lg" as="textarea" rows={5} type="text" name="about" onChange={handleChange} placeholder="What is your adress?" />
+                                <Form.Control size="lg" as="textarea" rows={5} type="text" name="adress" onChange={handleChange} placeholder="What is your adress?" />
+                            </Col>
+                        </Form.Row>
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Row>
+                            <Form.Label column="lg" lg={2}>
+                                Password : 
+                            </Form.Label>
+                            <Col>
+                                <Form.Control size="lg" rows={5} type="password" name="password" onChange={handleChange} placeholder="Password" />
                             </Col>
                         </Form.Row>
                     </Form.Group>
