@@ -25,8 +25,7 @@ export function Login(props){
             url: 'http://localhost:9999/api/v1/users/',
             data: user,
             headers: {
-                'Content-Type': 'application/json;charset=UTF-8', 
-                "Access-Control-Allow-Origin": "*"
+                "Authorization": "Basic " + btoa(user.username + ":" + user.password),
             }
         }).then(res => {
             console.log(res.data);
