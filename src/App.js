@@ -1,3 +1,4 @@
+import React, { useState, useMemo } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
@@ -13,21 +14,28 @@ import {Register} from './components/register';
 import {AddBooks} from './components/addBook';
 import {Login} from './components/login';
 
-function App() {
-  return (
-    <Router>
-        
-      <Navigation/>
-      <Switch>
-          <Route path="/" children={<Home />} exact />
-          <Route path="/books" children={<Book />} exact />
-          <Route path="/addbook" children={<AddBooks />} exact />
-          <Route path="/register" children={<Register />} exact />
-          <Route path="/login" children={<Login />} exact/> 
-          
-      </Switch>
+import {UserContext} from './contexts/context';
 
-    </Router>
+function App() {
+
+  const [auth, setAuth] = useState();
+  const value = useMemo(() => ({auth, setAuth}), [auth, setAuth]);
+
+  return (
+    <UserContext.Provider value={value}>
+      <Router>
+        <Navigation/>
+        <Switch>
+            <Route path="/" children={<Home />} exact />
+            <Route path="/books" children={<Book />} exact />
+            <Route path="/addbook" children={<AddBooks />} exact />
+            <Route path="/register" children={<Register />} exact />
+            <Route path="/login" children={<Login />} exact/> 
+            
+        </Switch>
+
+      </Router>
+    </UserContext.Provider> 
     
   );
 }

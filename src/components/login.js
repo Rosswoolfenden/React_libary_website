@@ -1,5 +1,6 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import axios from 'axios';
+import { UserContext } from '../contexts/context';
 import { Link } from 'react-router-dom';
 
 import {Form, Col, Button, InputGroup } from 'react-bootstrap';
@@ -12,6 +13,7 @@ const userFeilds = {
 export function Login(props){
 
     const [user, setUser] = useState(userFeilds);
+    const { auth, setAuth } = useContext(UserContext);
 
     const handleChange = async(event) => {
         setUser({...user, [event.target.name]: event.target.value});
@@ -28,15 +30,13 @@ export function Login(props){
             }
         }).then(res => {
             console.log(res.data);
+            setAuth(res.data.User);
             alert("Succesfully Logged in!");
             
         }).catch((e) => {
-            console.log(e.response.status);
-            if(e.response.status === 409) {
-                alert("Username already exists, please choose a new one");
-            } else {
-                alert("Internal server errror, try again later");
-            }
+                console.log(e);
+                alert("Could not log in");
+            
         });
     }
 
@@ -48,6 +48,7 @@ export function Login(props){
                    
 
                     <Col sm={3} className="my-1">
+                    
                     <Form.Label htmlFor="inlineFormInputGroupUsername" srOnly>Username</Form.Label>
                     <InputGroup>
                         <InputGroup.Prepend>
@@ -61,7 +62,10 @@ export function Login(props){
                         <Form.Control id="inlineFormInputName" type="password"  name="password" onChange={handleChange} placeholder="Password" />
                     </Col>
                     <Col xs="auto" className="my-1">
-                    <Button type="submit" onClick={submit} >Submit</Button>
+                    <Button onClick={async() => {
+                        await submit();
+                      //  setAuth(logedin);
+                    }} >Submit</Button>
                     </Col>
                     <Col xs="auto" className="my-1">
                     <Link to="/register">   Register </Link>
@@ -74,5 +78,13 @@ export function Login(props){
             </div>
         </div>
     )
-
+                    
+    async function login(user) {
+        console.log("we have been called");
+        const person =  {ID: 1, username: "ross"};
+        setAuth(person);
+        return person;
+    //    setContextuser(person); 
+    }
 }
+
