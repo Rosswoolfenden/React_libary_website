@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import Card from 'react-bootstrap/card';
-import {Button} from  'react-bootstrap';
+import {Button, CardGroup} from  'react-bootstrap';
 
 
 class Books extends React.Component {
@@ -28,11 +28,10 @@ class Books extends React.Component {
         if(!this.state.books.length) {
             return <h1> loading</h1>
         }
-
-        const bookGrid = this.state.books.map(book => {
-            return(
-                <div className="book-grid">
-                    <Card style={{width: '18rem'}} > 
+        const card = (book) => {
+            return (
+                <div>
+                    <Card className="card-style" > 
                         <Card.Body>
                             <Card.Title> {book.title} </Card.Title>
                             <Card.Text> {book.about} </Card.Text>
@@ -41,13 +40,24 @@ class Books extends React.Component {
                             <Button  variant="success" size="lg" block>Request book</Button>
                         </Card.Body>
                     </Card>
-
+                </div>
+            );
+        }
+        const bookGrid = this.state.books.map(book => {
+            return(
+                <div className="book-grid" >
+                   
+                    
+                        {card(book)}
                 </div>
             )
         })
         return (
-            <div>
-                {bookGrid}
+            <div className="book-grid" >
+                {/* <CardGroup> */}
+                    {bookGrid}
+                {/* </CardGroup> */}
+                
 
             </div>
                

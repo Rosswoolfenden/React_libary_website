@@ -45,6 +45,17 @@
   align-items: right;
   align-self: right;
 }
+.book-grid{
+  align-content: center;
+  align-self: center;
+  align-items: center;
+  margin-left: 10%;
+  justify-content: center;
+}
+.card-style {
+  width: 100%;
+  
+}
 
 @keyframes App-logo-spin {
   from {
