@@ -12,7 +12,7 @@ const userFeilds = {
     adress: "",
 };
 
-export function Register(props) {
+export function Register() {
 
     const [user, setUser] = useState(userFeilds);
     const [posted, setPosted] = useState("not-posted-book");

@@ -1,7 +1,8 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import axios from 'axios';
-
+import {UserContext} from '../contexts/context'
 import {Form, Col, Button} from 'react-bootstrap';
+import  { Redirect } from 'react-router-dom'
 
 export function AddBooks(props) {
     const bookFeilds = {
@@ -10,7 +11,9 @@ export function AddBooks(props) {
         genre: "",
         about: ""
     };
+    const { auth } = useContext(UserContext);
 
+    
     const [book, setBook] = useState(bookFeilds);
     const [posted, setPosted] = useState("not-posted-book");
 
@@ -24,17 +27,23 @@ export function AddBooks(props) {
         setBook({...book, [event.target.name]: intValue});
     }
     const submit = async() => {
-        await addBookToDb(book);
+        if(!auth) {
+            alert("You need to be logged in to complete this aciton ");
+            <Redirect to='/login'  />
+        } else {
+            await addBookToDb(book);
+        }
+        
     }
-
+    
+                // "Authorization": "Basic " + btoa(user.username + ":" + user.password),
     const addBookToDb = async(data)=> {
         axios({
             method: 'post',
             url: 'http://localhost:9999/api/v1/books/add',
             data: data,
             headers: {
-                'Content-Type': 'application/json;charset=UTF-8', 
-                "Access-Control-Allow-Origin": "*"
+                "Authorization": "Basic " + btoa(auth.username + ":" + auth.password),
             }
         }).then(res => {
             console.log(res);

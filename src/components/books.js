@@ -19,6 +19,7 @@ class Books extends React.Component {
                 this.setState({books: res.data})
             })
             .catch(e => {
+                alert("Failed to get Book data");
                 console.log(e);
             });
     }

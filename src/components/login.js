@@ -30,6 +30,10 @@ export function Login(){
             }
         }).then(res => {
             console.log(res.data);
+
+            const UserData = res.data.User;
+            //save password to send as auth in future calls
+            UserData.password = user.password;
            setAuth(res.data.User);
            // alert("Succesfully Logged in!");
            return res.data.User;

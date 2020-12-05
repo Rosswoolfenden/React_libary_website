@@ -24,8 +24,9 @@ function App() {
   return (
     <Router>
     <div>
-      <Navigation />
+      
       <UserContext.Provider value={value}>
+      <Navigation />
         <Route path="/" exact component={Home} />
         <Route path="/books" component={Book} /> 
         <Route path="/addbook" component={AddBooks} />
