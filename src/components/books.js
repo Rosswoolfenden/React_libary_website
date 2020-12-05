@@ -31,7 +31,7 @@ class Books extends React.Component {
 
         const bookGrid = this.state.books.map(book => {
             return(
-                <div>
+                <div className="book-grid">
                     <Card style={{width: '18rem'}} > 
                         <Card.Body>
                             <Card.Title> {book.title} </Card.Title>
