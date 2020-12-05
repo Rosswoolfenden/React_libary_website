@@ -1,6 +1,6 @@
 import React, {useState, useContext} from 'react';
 import axios from 'axios';
-import { UserContext } from '../contexts/context';
+import { UserContext } from '../../src/contexts/context';
 import { Link } from 'react-router-dom';
 
 import {Form, Col, Button, InputGroup } from 'react-bootstrap';
@@ -10,9 +10,10 @@ const userFeilds = {
     password: ""
 };
 
-export function Login(props){
+export function Login(){
 
     const [user, setUser] = useState(userFeilds);
+
     const { auth, setAuth } = useContext(UserContext);
 
     const handleChange = async(event) => {
@@ -29,8 +30,9 @@ export function Login(props){
             }
         }).then(res => {
             console.log(res.data);
-            setAuth(res.data.User);
-            alert("Succesfully Logged in!");
+           setAuth(res.data.User);
+           // alert("Succesfully Logged in!");
+           return res.data.User;
             
         }).catch((e) => {
                 console.log(e);
@@ -62,7 +64,9 @@ export function Login(props){
                     </Col>
                     <Col xs="auto" className="my-1">
                     <Button onClick={async() => {
-                        await submit();
+                        await submit()
+                        // console.log("USER RETURN IS " + log);
+                        // setAuth(log);
                       //  setAuth(logedin);
                     }} >Submit</Button>
                     </Col>
@@ -73,6 +77,7 @@ export function Login(props){
                 </Form.Row>
                 
                 </Form>
+                {JSON.stringify(auth)}
                 
             </div>
         </div>
@@ -81,7 +86,7 @@ export function Login(props){
     async function login(user) {
         console.log("we have been called");
         const person =  {ID: 1, username: "ross"};
-        setAuth(person);
+       // setAuth(person);
         return person;
     //    setContextuser(person); 
     }

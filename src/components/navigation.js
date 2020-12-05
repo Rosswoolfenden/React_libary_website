@@ -1,16 +1,24 @@
 import React from 'react';
 import {Navbar, Nav, Button, FormControl, Form, NavDropdown} from 'react-bootstrap';
-
+import {Link } from 'react-router-dom';
 export function Navigation(props) {
     return (
         // <h1> HELLO </h1>
         <Navbar bg="dark" variant="dark">
             <Navbar.Brand href="/">Public Libary </Navbar.Brand>
             <Nav className="mr-auto">
-                <Nav.Link href="/">Home</Nav.Link>
-                <Nav.Link href="/books">Books</Nav.Link>
-                <Nav.Link href="/addbook"> Add Book </Nav.Link>
-                <Nav.Link href="/register"> Register</Nav.Link>
+                <Nav.Link href="/"> 
+                    <Link to="/" className="nav-link">Home</Link>
+                </Nav.Link>
+                <Nav.Link href="/books"> 
+                    <Link to="/books" className="nav-link">Books</Link>
+                </Nav.Link>
+                <Nav.Link href="/addbook">
+                    <Link to="/addbook" className="nav-link">Add</Link>
+                </Nav.Link>
+                <Nav.Link href="/register"> 
+                    <Link to="/register" className="nav-link">Register</Link>
+                </Nav.Link>
                 {/* <NavDropdown href="/account" bg="light" variant="dark" title="Account" id="basic-nav-dropdown">
                     <NavDropdown  variant="dark"> View Books </NavDropdown>
                     <NavDropdown > Settings </NavDropdown>

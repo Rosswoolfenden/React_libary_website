@@ -3,9 +3,10 @@ import React, { useContext } from 'react';
 import {UserContext} from '../contexts/context';
 //import {Card} from 'bootstrap';
 
-export function Home(props) {
+export function Home() {
 
     const {auth} = useContext(UserContext);    
+    console.log(auth);
    // let [books, setBooks] = useState[0];
     // const books = [];
     // useEffect(() => {
@@ -18,7 +19,7 @@ export function Home(props) {
         <div >
             <div className="App">
                 <h1> Public Lsdibary </h1>
-                <p> The user is {JSON.stringify(auth)} </p>
+                {JSON.stringify(auth)}
             </div>
             
             
