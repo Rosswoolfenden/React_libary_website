@@ -50,11 +50,20 @@
   align-self: center;
   align-items: center;
   margin-left: 10%;
+  margin-right: 10%;
   justify-content: center;
 }
 .card-style {
-  width: 100%;
+  width: 80%;
   
+}
+.book-photo{
+  width: 20rem;
+  height: 30rem;
+
+}
+.book-description{
+  width: 40rem;
 }
 
 @keyframes App-logo-spin {
