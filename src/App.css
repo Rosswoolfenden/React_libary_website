@@ -57,6 +57,12 @@
   width: 80%;
   
 }
+
+.header{
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
 .book-photo{
   width: 20rem;
   height: 30rem;
@@ -64,6 +70,13 @@
 }
 .book-description{
   width: 40rem;
+  height: 20rem;
+
+}
+
+.requestButton {
+  margin-top: 1.5%;
+
 }
 
 @keyframes App-logo-spin {

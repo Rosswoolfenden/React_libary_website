@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import Card from 'react-bootstrap/card';
 import {Button, CardGroup, ListGroup} from  'react-bootstrap';
+import { useHistory } from 'react-router-dom';
 
 import nobook from '../img/nobook.png';
 
@@ -13,6 +14,8 @@ class Books extends React.Component {
             books: []
         }
     }
+
+  
 
     componentDidMount() {
         axios.get('http://localhost:9999/api/v1/books')
@@ -26,25 +29,15 @@ class Books extends React.Component {
             });
     }
 
+    
+
     render() {
+        
         if(!this.state.books.length) {
             return <h1> loading</h1>
         }
-        const card = (book) => {
-            return (
-                <div>
-                    <Card className="card-style" > 
-                        <Card.Body>
-                            <Card.Title> {book.title} </Card.Title>
-                            <Card.Text> {book.about} </Card.Text>
-                            <Card.Text> {book.rating} </Card.Text>
-                            <Card.Text> {book.status} </Card.Text>
-                            <Button  variant="success" size="lg" block>Request book</Button>
-                        </Card.Body>
-                    </Card>
-                </div>
-            );
-        }
+
+        
         const bookPhoto = (img) => {
             if(!img) { 
                 return (
@@ -73,11 +66,11 @@ class Books extends React.Component {
                                 <ListGroup.Item> 
                                     {book.author}
                                 </ListGroup.Item>
-                                <ListGroup.Item>
+                                <ListGroup.Item className="book-description">
                                     {book.about}
                                 </ListGroup.Item>
-                                <ListGroup>
-                                    <Button>
+                                <ListGroup className="requestButton">
+                                    <Button onClick={this.routeChange}>
                                         Request Book
                                     </Button>
                                 </ListGroup>

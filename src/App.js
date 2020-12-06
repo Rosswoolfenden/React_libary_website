@@ -14,6 +14,8 @@ import {Register} from './components/register';
 import {AddBooks} from './components/addBook';
 import {Login} from './components/login';
 
+import {BookList} from './components/bookList';
+
 import {UserContext} from './contexts/context';
 
 function App() {
@@ -28,7 +30,8 @@ function App() {
       <UserContext.Provider value={value}>
       <Navigation />
         <Route path="/" exact component={Home} />
-        <Route path="/books" component={Book} /> 
+        <Route path="/books" component={Book} />
+        <Route path="/bookist" component={BookList} /> 
         <Route path="/addbook" component={AddBooks} />
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />

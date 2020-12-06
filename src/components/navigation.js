@@ -4,28 +4,23 @@ import {Link } from 'react-router-dom';
 import { UserContext } from '../contexts/context';
 
 export function Navigation() {
-    const { auth } = useContext(UserContext);    
+    const { auth } = useContext(UserContext);
+    
     return (
         // <h1> HELLO </h1>
         <Navbar bg="dark" variant="dark">
             <Navbar.Brand href="/">Public Libary </Navbar.Brand>
             <Nav className="mr-auto">
                 <Nav.Link href="/"> 
-                    <Link to="/" className="nav-link">Home</Link>
+                    <Link to="/books" className="nav-link">Home</Link>
                 </Nav.Link>
-                <Nav.Link href="/books"> 
-                    <Link to="/books" className="nav-link">Books</Link>
+                <Nav.Link href="/addbook"> 
+                    <Link to="/addbook" className="nav-link">Add Book</Link>
                 </Nav.Link>
                 <Nav.Link href="/addbook">
-                    <Link to="/addbook" className="nav-link">Add</Link>
+                    <Link to="/addbook" className="nav-link">Requests</Link>
                 </Nav.Link>
                 
-                
-                {/* <NavDropdown href="/account" bg="light" variant="dark" title="Account" id="basic-nav-dropdown">
-                    <NavDropdown  variant="dark"> View Books </NavDropdown>
-                    <NavDropdown > Settings </NavDropdown>
-                    <NavDropdown> Log out </NavDropdown>
-                </NavDropdown> */}
             </Nav>
             {auth ? (
                 <Nav >
