@@ -54,7 +54,7 @@ export function BookList() {
                     {bookPhoto(book.imageURL)} 
                     </ListGroup.Item>
                     <ListGroup.Item className="book-description">
-                        <ListGroup varient  variant="flush" >
+                        <ListGroup   variant="flush" >
                             <ListGroup.Item> 
                                 {book.title} {book.isbn}
                             </ListGroup.Item>

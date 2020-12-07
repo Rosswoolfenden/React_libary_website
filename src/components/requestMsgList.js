@@ -1,23 +1,24 @@
 import Axios from 'axios';
 import React, {useEffect, useState, useContext} from 'react';
+import { ListGroup, Button } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
 import { UserContext } from '../contexts/context';
 
 
 export function RequestMsgList() {  
     const [msgs, setMsgs] =  useState([]);
-    const [hasMsgs, setHasMsgs] =  useState(false);
+    const [whoreq, setWhoReq] =  useState("");
     const { auth } = useContext(UserContext)
     const history = useHistory();
     const goBackToHome = () => {
         let path ='/';
         history.push(path);
     }
-    const goToMsg = (book) => {
-        let path = '/send';
+    const goToMsg = (chat) => {
+        let path = '/messages';
         history.push({
             pathname: path,
-            Book: book
+            chatinfo: chat
         }) 
     }
     useEffect(() => {
@@ -30,38 +31,52 @@ export function RequestMsgList() {
 
         }).then(res => {
             console.log(res);
-            if(!res.data) {
-                setHasMsgs(false);
-            } else {
-                setHasMsgs(false);
-            }
-            setMsgs(res.data);
+            if(res.data) {
+                
+                setMsgs(res.data);
+            } 
+            
         }).catch(e => {
             console.log(e);
         })
+        // setHasMsgs(true);
     },[auth.username, auth.password]);
 
     const listMsg = (msg) => {
+        return (
+            <ListGroup vertica>
+                <ListGroup  variant="flush">
+                    <ListGroup.Item  > 
+                        - 
+                    </ListGroup.Item>
+                    <ListGroup.Item>
+                        {msg.booktitle} - 
+                        <Button>  View Chat </Button>
+                    </ListGroup.Item>
+                    <ListGroup.Item>
+
+                    </ListGroup.Item>
+                    
+                </ListGroup>
+            </ListGroup>
+        )
         
     }
 
     const msgList = msgs.map(msg => {
+        console.log(msg.ownerId);
+      
         return (
-            <div> 
-                {listMsg(msg)}
+            <div className="book-grid" > 
+                 {listMsg(msg)}
             </div>
         )
     });
     return (
-        <div>
-            {hasMsgs ? (
-                <div> you have messages </div>
-            ) : (
-                <div>
-                    <h1 className="header"> You have no messages </h1>
-                </div>
-                
-            )}
+        
+        <div className="header" >
+                <h1> Yout Messages </h1>
+                {msgList}
             
         </div>
     )
