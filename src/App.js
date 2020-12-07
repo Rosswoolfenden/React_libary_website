@@ -1,18 +1,17 @@
 import React, { useState, useMemo } from 'react';
 import {
   BrowserRouter as Router,
-  Link,
   Route
 } from 'react-router-dom';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Navbar, Nav, Button, FormControl, Form} from 'react-bootstrap';
 import {Navigation} from './components/navigation';
-import {Home} from './components/home';
-import Book from './components/books';
+// import {BookList} from './components/bookList';
 import {Register} from './components/register';
 import {AddBooks} from './components/addBook';
 import {Login} from './components/login';
+import {Sent} from './components/sent';
+import {Recieved} from './components/recieved';
 
 import {BookList} from './components/bookList';
 
@@ -29,21 +28,17 @@ function App() {
       
       <UserContext.Provider value={value}>
       <Navigation />
-        <Route path="/" exact component={Home} />
-        <Route path="/books" component={Book} />
+        <Route path="/" exact component={BookList} />
+        <Route path="/books" component={BookList} />
         <Route path="/bookist" component={BookList} /> 
         <Route path="/addbook" component={AddBooks} />
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
+        <Route path='/sent' component={Sent} />
+        <Route path='/recieved' component={Recieved} />
       </UserContext.Provider>
     </div>
   </Router>
   );
 }
-{/* <Route path="/" children={<Home />} exact />
-              <Route path="/books" children={<Book />} exact />
-              <Route path="/addbook" children={<AddBooks />} exact />
-              <Route path="/register" children={<Register />} exact />
-              <Route path="/login" children={<Login />} exact/>  */}
-
 export default App;

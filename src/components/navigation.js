@@ -12,13 +12,19 @@ export function Navigation() {
             <Navbar.Brand href="/">Public Libary </Navbar.Brand>
             <Nav className="mr-auto">
                 <Nav.Link href="/"> 
-                    <Link to="/books" className="nav-link">Home</Link>
+                    <Link to="/" className="nav-link">Home</Link>
                 </Nav.Link>
                 <Nav.Link href="/addbook"> 
                     <Link to="/addbook" className="nav-link">Add Book</Link>
                 </Nav.Link>
-                <Nav.Link href="/addbook">
-                    <Link to="/addbook" className="nav-link">Requests</Link>
+                <Nav.Link href="/recieved">
+                    <Link to="/recieved" className="nav-link"> Your Books </Link>
+                </Nav.Link>
+                <Nav.Link href="/sent">
+                    <Link to="/sent" className="nav-link"> Sent </Link>
+                </Nav.Link>
+                <Nav.Link href="/recieved">
+                    <Link to="/recieved" className="nav-link"> Recieved </Link>
                 </Nav.Link>
                 
             </Nav>

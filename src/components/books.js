@@ -1,8 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import Card from 'react-bootstrap/card';
-import {Button, CardGroup, ListGroup} from  'react-bootstrap';
-import { useHistory } from 'react-router-dom';
+import {Button, ListGroup} from  'react-bootstrap';
 
 import nobook from '../img/nobook.png';
 

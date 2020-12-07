@@ -7,13 +7,18 @@ import nobook from '../img/nobook.png';
 
 export function BookList() { 
     const [books, setBooks] =  useState([]);
+    // const []
     console.log("we have been called");
 
 
     const history = useHistory();
-    const goToMsg = () => {
-        let path = '/register';
-        history.push(path);
+    const goToMsg = (book) => {
+        console.log("been called " + book);
+        let path = '/sent';
+        history.push({
+            pathname: path,
+            Book: book
+        })
         
     }
 
@@ -60,7 +65,7 @@ export function BookList() {
                                 {book.about}
                             </ListGroup.Item>
                             <ListGroup className="requestButton">
-                                <Button onClick={goToMsg} >
+                                <Button onClick={() => { goToMsg(book)} }>
                                     Request Book
                                 </Button>
                             </ListGroup>
