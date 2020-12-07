@@ -14,7 +14,7 @@ export function BookList() {
     const history = useHistory();
     const goToMsg = (book) => {
         console.log("been called " + book);
-        let path = '/sent';
+        let path = '/send';
         history.push({
             pathname: path,
             Book: book
@@ -25,7 +25,7 @@ export function BookList() {
     useEffect(() => {
         axios.get('http://localhost:9999/api/v1/books')
             .then(res => {
-                setBooks(res.data);
+               setBooks(res.data);
             })
             .catch(e => {
                 alert("Failed to get Book data");

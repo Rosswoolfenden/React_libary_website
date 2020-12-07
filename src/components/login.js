@@ -81,7 +81,7 @@ export function Login(){
                 </Form.Row>
                 
                 </Form>
-                {JSON.stringify(auth)}
+                
                 
             </div>
         </div>

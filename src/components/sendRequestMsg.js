@@ -3,25 +3,28 @@ import axios from 'axios';
 import { useLocation } from 'react-router-dom';
 import { Button, Card } from 'react-bootstrap';
 import { UserContext } from '../contexts/context';
+import { useHistory } from 'react-router-dom';
 // import nobook from '../img/nobook.png';
 
-export function Sent(props) {
+export function SendRequestMsg(props) {
     const { auth } = useContext(UserContext);
 
     const [chats, setChats] =  useState([]);
     const [newmsg, setMsg] = useState({msg: ""});
     const [book, setBook] = useState();
     const location = useLocation();
+    const history = useHistory();
 
+    const goBackToHome = () => {
+        let path ='/';
+        history.push(path);
+    }
     useEffect(() => {
-        console.log(location.Book);
         setBook(location.Book);
-        console.log(book);
         const owner = (location.Book.ownerId).toString();
-        console.log(owner);
         const APIurl = 'http://localhost:9999/api/v1/requests/getSent/' + owner;
         const testURL = 'http://localhost:9999/api/v1/requests/getSent/11' 
-        console.log(testURL);
+        console.log(APIurl);
         axios({
             method: 'get',
             url: APIurl,
@@ -42,22 +45,45 @@ export function Sent(props) {
             console.log(e);
         })
 
-    },[auth.password, auth.username, book, location.Book] );
+    },[auth.password, auth.username, book, location.Book]);
 
     const handleChange = async(event) => {
         setMsg({...newmsg, [event.target.name] : event.target.value});
         console.log(newmsg);
     }
 
-    const submit = () => {
+    const submit = async() => {
         console.log("submit has been called");
+        const msg = "I REQUEST BOOK - " + book.title + " - " + newmsg.msg;
+        console.log(msg);
+        const data = {
+            "bookId": book.ID,
+            "msg": msg
+        }
+        await sendmsg(data);
     }
-    const sendmsg = async() => {
+    const sendmsg = async(data) => {
+        axios({
+            method: 'post',
+            url: 'http://localhost:9999/api/v1/requests/sendRequest',
+            data: data,
+            headers: {
+                "Authorization": "Basic " + btoa(auth.username + ":" + auth.password),
+            }
+        }).then(res => {
+            console.log(res);
+            
+            alert("Sent message to request book");
+            goBackToHome();
 
+        }).catch((e) => {
+            alert("Failed to send message, try again later");
+        })
     }
     const chatGrid = chats.map(msg => {
         console.log("we are here" + msg.msg);
         return(
+
             <Card.Text>
                 {msg.sender_name} : {msg.msg}
             </Card.Text>
