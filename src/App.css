@@ -114,7 +114,7 @@
   height: 45rem;
 }
 
-.chat-side-list{
+.chat-side-list-container{
   margin-right: 2%;
   margin-left: 2%;
   flex-grow: 1;
@@ -124,11 +124,16 @@
   
 }
 
-.chat-box{
+.chat-box-container{
   background-color: grey;
   flex-grow: 4;
   margin-right: 2%;
   align-items: stretch;
+}
+
+.chatlist {
+  display: flex;
+  flex-direction: column;
 }
 @keyframes App-logo-spin {
   from {

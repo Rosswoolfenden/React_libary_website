@@ -20,10 +20,10 @@ export function Messenger (props) {
             <h1 className="header"> We here baby </h1>
             <div className="messenger-container"> 
                 
-                <div className="chat-side-list"> 
+                <div className="chat-side-list-container"> 
                     left bank
                 </div> 
-                <div className="chat-box"> 
+                <div className="chat-box-container"> 
                      <Chat chat={"Ross"}/>
                 </div>
             </div>

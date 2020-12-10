@@ -28,20 +28,20 @@ export function RequestMsgList() {
             headers: {
                 "Authorization": "Basic " + btoa(auth.username + ":" + auth.password),
             }
-
         }).then(res => {
             console.log(res);
             if(res.data) {
                 
                 setMsgs(res.data);
             } 
-            
         }).catch(e => {
             console.log(e);
         })
         // setHasMsgs(true);
     },[auth.username, auth.password]);
 
+
+    
     const listMsg = (msg) => {
         return (
             <ListGroup vertica>
