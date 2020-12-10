@@ -36,7 +36,7 @@ export function BookList() {
     const bookPhoto = (img) => {
         if(!img) { 
             return (
-                <img src={nobook} />
+                <img alt="" src={nobook} />
             )
         } else {
             return (

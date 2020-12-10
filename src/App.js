@@ -11,8 +11,9 @@ import {Register} from './components/register';
 import {AddBooks} from './components/addBook';
 import {Login} from './components/login';
 import {SendRequestMsg} from './components/sendRequestMsg';
-import {Recieved} from './components/recieved';
+import {Messenger} from './components/messager';
 import {RequestMsgList} from './components/requestMsgList'
+
 
 import {BookList} from './components/bookList';
 
@@ -37,7 +38,7 @@ function App() {
         <Route path="/register" component={Register} />
         <Route path='/send' component={SendRequestMsg} />
         <Route path='/sent' component={RequestMsgList} />
-        <Route path='/recieved' component={Recieved} />
+        <Route path='/messenger' component={Messenger} />
       </UserContext.Provider>
     </div>
   </Router>

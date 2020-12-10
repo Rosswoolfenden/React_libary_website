@@ -11,7 +11,6 @@ const userFeilds = {
 };
 
 export function Login(){
-
     const [user, setUser] = useState(userFeilds);
 
     const { auth, setAuth } = useContext(UserContext);
@@ -50,10 +49,7 @@ export function Login(){
             <div>
             <Form>
                 <Form.Row className="align-items-center">
-                   
-
                     <Col sm={3} className="my-1">
-                    
                     <Form.Label htmlFor="inlineFormInputGroupUsername" srOnly>Username</Form.Label>
                     <InputGroup>
                         <InputGroup.Prepend>
@@ -68,10 +64,7 @@ export function Login(){
                     </Col>
                     <Col xs="auto" className="my-1">
                     <Button onClick={async() => {
-                        await submit()
-                        // console.log("USER RETURN IS " + log);
-                        // setAuth(log);
-                      //  setAuth(logedin);
+                        await submit();
                     }} >Submit</Button>
                     </Col>
                     <Col xs="auto" className="my-1">
@@ -86,13 +79,6 @@ export function Login(){
             </div>
         </div>
     )
-                    
-    async function login(user) {
-        console.log("we have been called");
-        const person =  {ID: 1, username: "ross"};
-       // setAuth(person);
-        return person;
-    //    setContextuser(person); 
-    }
+            
 }
 

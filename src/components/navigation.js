@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import {Navbar, Nav, Button, FormControl, Form} from 'react-bootstrap';
+import {Navbar, Nav} from 'react-bootstrap';
 import {Link } from 'react-router-dom';
 import { UserContext } from '../contexts/context';
 
@@ -23,9 +23,10 @@ export function Navigation() {
                 <Nav.Link href="/sent">
                     <Link to="/sent" className="nav-link"> Sent </Link>
                 </Nav.Link>
-                <Nav.Link href="/recieved">
-                    <Link to="/recieved" className="nav-link"> Recieved </Link>
+                <Nav.Link href="/messenger">
+                    <Link to="/messenger" className="nav-link"> Chat </Link>
                 </Nav.Link>
+                
                 
             </Nav>
             {auth ? (

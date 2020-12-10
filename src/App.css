@@ -106,6 +106,30 @@
 
 }
 
+/* Messenger css */
+.messenger-container {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  height: 45rem;
+}
+
+.chat-side-list{
+  margin-right: 2%;
+  margin-left: 2%;
+  flex-grow: 1;
+  height: 100%;
+  background-color: green;
+  align-items: stretch;
+  
+}
+
+.chat-box{
+  background-color: grey;
+  flex-grow: 4;
+  margin-right: 2%;
+  align-items: stretch;
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

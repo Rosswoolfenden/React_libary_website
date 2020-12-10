@@ -7,9 +7,9 @@ import { UserContext } from '../contexts/context';
 
 export function RequestMsgList() {  
     const [msgs, setMsgs] =  useState([]);
-    const [whoreq, setWhoReq] =  useState("");
     const { auth } = useContext(UserContext)
     const history = useHistory();
+    
     const goBackToHome = () => {
         let path ='/';
         history.push(path);

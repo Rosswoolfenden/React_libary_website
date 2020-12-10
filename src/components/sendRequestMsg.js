@@ -109,23 +109,12 @@ export function SendRequestMsg(props) {
                             await submit();
                         }}> send </Button>
                     </from>
-                    {/* <Form className="sendMessage">
-                        <FormControl  className="messagebox" type="text" placeholder=" Send Message "  />
-                        <Button variant="outline-success"> Search </Button>
-                    </Form> */}
-                
                 </Card>
                  </div>
             ) : (
                 <h2> is not loaded </h2>
             )}
             </div>
-
-
-            
-            
-
-       
     )
 
 
