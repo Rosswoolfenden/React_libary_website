@@ -1,9 +1,11 @@
 import React, {useEffect, useState, useContext} from 'react';
 import axios from 'axios';
 import { UserContext } from '../contexts/context';
+import { ListGroup } from 'react-bootstrap';
 
-export function Chatlist() {
+export function Chatlist(props) {
     const [chats, addChats] = useState([]);
+    
     const { auth } = useContext(UserContext);
 
     
@@ -25,10 +27,28 @@ export function Chatlist() {
         // setHasMsgs(true);
     },[auth.username, auth.password]);
 
+    const chooseChat = (chat) =>{
+        console.log("The chat values object is " + chat.target.value);
+        console.log(chat.target.value);
+    }
+
+    const chatlist = chats.map(chat => {
+        return (
+            <ListGroup.Item action varient="secondary" value={chat.ID} name="chat" onClick={chooseChat}>
+                Book : {chat.booktitle}
+            </ListGroup.Item>
+            
+        )
+    })
 
     return (
         <div className="chatlist">
             <h1> This is the chat list </h1>
+            <ListGroup>
+                {chatlist}
+            </ListGroup>
+            
+             
         </div>
     )
 }

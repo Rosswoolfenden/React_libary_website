@@ -1,5 +1,6 @@
 import React, {useEffect, useState, useContext} from 'react';
 import { Chat } from './chat';
+import { Chatlist } from './chatlist';
 // import axios from 'axios';
 // import { useLocation } from 'react-router-dom';
 // import { Button, Card } from 'react-bootstrap';
@@ -21,7 +22,7 @@ export function Messenger (props) {
             <div className="messenger-container"> 
                 
                 <div className="chat-side-list-container"> 
-                    left bank
+                    <Chatlist />
                 </div> 
                 <div className="chat-box-container"> 
                      <Chat chat={"Ross"}/>

@@ -119,16 +119,19 @@
   margin-left: 2%;
   flex-grow: 1;
   height: 100%;
-  background-color: green;
+  border-radius: 15px 50px;
+  outline-style: solid;
   align-items: stretch;
   
 }
 
 .chat-box-container{
-  background-color: grey;
+  outline-style: solid;
+  border-radius: 15px 50px;
   flex-grow: 4;
   margin-right: 2%;
   align-items: stretch;
+
 }
 
 .chatlist {
