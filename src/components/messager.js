@@ -7,7 +7,7 @@ import { Chatlist } from './chatlist';
 import { UserContext } from '../contexts/context';
 // import { useHistory } from 'react-router-dom';
 
-export function Messenger (props) { 
+export function Messenger () { 
 
     const { auth } =  useContext(UserContext);
     const [chat, OpenChat] =  useState();
@@ -22,10 +22,10 @@ export function Messenger (props) {
             <div className="messenger-container"> 
                 
                 <div className="chat-side-list-container"> 
-                    <Chatlist />
+                    <Chatlist setChat={OpenChat}/>
                 </div> 
                 <div className="chat-box-container"> 
-                     <Chat chat={"Ross"}/>
+                     <Chat chat={chat}/>
                 </div>
             </div>
         </div>

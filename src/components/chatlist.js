@@ -30,6 +30,8 @@ export function Chatlist(props) {
     const chooseChat = (chat) =>{
         console.log("The chat values object is " + chat.target.value);
         console.log(chat.target.value);
+        // props.
+        props.setChat(chat.target.value);
     }
 
     const chatlist = chats.map(chat => {
