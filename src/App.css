@@ -131,7 +131,25 @@
   flex-grow: 4;
   margin-right: 2%;
   align-items: stretch;
+  position: relative;
 
+}
+
+.chat-message{
+  display: inline;
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 2%;
+  margin-left: 2%;
+  width: 100%;
+  margin-right: 2%;
+  
+}
+.send-input{
+  
+  width: 90%;
+  margin-right: 2%;
+  height: 2.5rem;
 }
 
 .chatlist {

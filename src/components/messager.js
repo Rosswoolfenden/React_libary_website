@@ -18,7 +18,7 @@ export function Messenger () {
     return (
         <div>
 
-            <h1 className="header"> We here baby </h1>
+            <h1 className="header"> Messenger </h1>
             <div className="messenger-container"> 
                 
                 <div className="chat-side-list-container"> 

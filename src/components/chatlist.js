@@ -31,6 +31,7 @@ export function Chatlist(props) {
         console.log("The chat values object is " + chat.target.value);
         console.log(chat.target.value);
         // props.
+        console.log(chat);
         props.setChat(chat.target.value);
     }
 

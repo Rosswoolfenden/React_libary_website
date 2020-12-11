@@ -21,7 +21,8 @@ import {UserContext} from './contexts/context';
 
 function App() {
 
-  const [auth, setAuth] = useState({username: "ross", password: "qwerty"});
+  const [auth, setAuth] = useState({ID: 26, username: "ross", password: "qwerty", firstName: "Ross "});
+  // const [auth, setAuth] = useState();
   const value = useMemo(() => ({auth, setAuth}), [auth, setAuth]);
   console.log("VALUE PARESED IN IS " + value);
   return (
