@@ -1,5 +1,6 @@
 import React, {useEffect, useState, useContext} from 'react';
 import axios from 'axios';
+import {Adresspopup} from './adresspopup';
 import { UserContext } from '../contexts/context';
 import { ListGroup, Button } from 'react-bootstrap';
 
@@ -9,6 +10,8 @@ export function Chat(props) {
     const [newMsg, setNewMsg] = useState();
     const [owner, setOwner] = useState(false);
     const [details, setDetails] =  useState({});
+    const [booktitle, setBooktile] = useState();
+    const [adress, showAdress] = useState(false);
 
     const handleChange = async(event) => {
         setNewMsg({...newMsg, [event.target.name]: event.target.value});
@@ -51,6 +54,7 @@ export function Chat(props) {
         })
     }
     useEffect(() => {
+        console.log(props);
         if(!props.chat) {
             console.log("No chat");
         } else {
@@ -66,16 +70,16 @@ export function Chat(props) {
                     "Authorization": "Basic " + btoa(auth.username + ":" + auth.password),
                 }
             }).then(res => {
-                console.log(res);
                 const ownid = res.data[0].ownerId;
                 let own = false;
                 if(ownid === auth.ID) {
                     console.log("owner is true");
                     own = true;
                 }
-                console.log(res.data[0])
                 let chatinfo = res.data[0];
+                console.log(chatinfo);
                 setDetails({ownerId: chatinfo.ownerId, requesterId: chatinfo.requesterId, bookId: chatinfo.bookId});
+                setBooktile(chatinfo.booktitle);
                 setMsg(res.data);
                 setOwner(own);
             }).catch((e) => {
@@ -95,21 +99,45 @@ export function Chat(props) {
         )
         
     });
+
+    const getAdress = async() => {
+
+    }
     return(
         <div className="chatbox">
-            <h1 className="header"> Welcome to chat </h1>
+            {adress ? (
+                <div> 
+                    <Adresspopup />
+                </div>
+            ) : (
+                <div> </div>
+            )}
+
+            {owner ? (
+                <div className="topbarchat">
+
+                    <h1 className="chathead"> Chat </h1>
+                    <Button className="chattopbutton" varient="secondary" onClick={() => {showAdress(true)}} > Get user info </Button>
+                </div>
+            ) : (
+                <h1 className="header"> Chat </h1>
+            )}
+            
             <div>
                 <ListGroup>
                     {messageList}
                 </ListGroup>
             </div>
             {owner ? (
+
                 <div className="chat-message">
                     <input className="send-input" name="msg" onChange={handleChange} placeholder="Enter your message"/>
                     <Button varient="success" onClick={acceptreq}> Accept! </Button>
                 </div>
             ) : (
+                
                 <div className="chat-message">
+                    
                     <input className="send-input" name="msg" onChange={handleChange} placeholder="Enter your message"/>
                     <Button varient="success"> Send! </Button>
                 </div>

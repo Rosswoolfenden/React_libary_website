@@ -27,12 +27,10 @@ export function Chatlist(props) {
         // setHasMsgs(true);
     },[auth.username, auth.password]);
 
-    const chooseChat = (chat) =>{
-        console.log("The chat values object is " + chat.target.value);
-        console.log(chat.target.value);
+    const chooseChat = (event) =>{
         // props.
-        console.log(chat);
-        props.setChat(chat.target.value);
+        console.log(event);
+        props.setChat(event.target.value);
     }
 
     const chatlist = chats.map(chat => {

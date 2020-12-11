@@ -156,6 +156,28 @@
   display: flex;
   flex-direction: column;
 }
+
+.topbarchat{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.chathead {
+  margin-right: 80%;
+}
+
+.popupwindow{
+  position: fixed;
+  z-index: 1;
+  width: 50%;
+  height: 50%;
+  background-color: grey;
+}
+
+.popupcontent{
+  position: absolute;
+
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
