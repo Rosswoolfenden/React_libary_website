@@ -90,6 +90,7 @@ export function BookList() {
         <div className="book-grid">
             <h1 className="header"> Books </h1>
             <h2 className="header">  Search </h2>
+            
             {bookGrid}
         </div>
     )

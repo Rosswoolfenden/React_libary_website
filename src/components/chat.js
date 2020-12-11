@@ -9,6 +9,7 @@ export function Chat(props) {
     const [msgs, setMsg] = useState([]);
     const [newMsg, setNewMsg] = useState();
     const [owner, setOwner] = useState(false);
+    const [sender, setSender] =  useState();
     const [details, setDetails] =  useState({});
     const [booktitle, setBooktile] = useState();
     const [adress, showAdress] = useState(false);
@@ -74,6 +75,7 @@ export function Chat(props) {
                 let own = false;
                 if(ownid === auth.ID) {
                     console.log("owner is true");
+                    setSender(res.data[0].requesterId);
                     own = true;
                 }
                 let chatinfo = res.data[0];
@@ -107,7 +109,7 @@ export function Chat(props) {
         <div className="chatbox">
             {adress ? (
                 <div> 
-                    <Adresspopup />
+                    <Adresspopup userid={sender} openWindow={showAdress}/>
                 </div>
             ) : (
                 <div> </div>

@@ -67,6 +67,8 @@
   align-self: right;
 }
 .book-grid{
+  display: flex;
+  flex-direction: column;
   align-content: center; 
   align-self: center;
   align-items: center;
@@ -172,10 +174,15 @@
   width: 50%;
   height: 50%;
   background-color: grey;
+  justify-content: center;
 }
+
+
 
 .popupcontent{
   position: absolute;
+  justify-content: center;
+  align-content: center;
 
 }
 @keyframes App-logo-spin {
