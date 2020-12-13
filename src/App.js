@@ -11,7 +11,7 @@ import {Register} from './components/register';
 import {AddBooks} from './components/addBook';
 import {Login} from './components/login';
 import {Messenger} from './components/messager';
-
+import {UserbookList} from './components/userBookList';
 
 import {BookList} from './components/bookList';
 
@@ -35,6 +35,7 @@ function App() {
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
         <Route path='/messenger' component={Messenger} />
+        <Route path= '/updatebook' component={UserbookList} />
       </UserContext.Provider>
     </div>
   </Router>
