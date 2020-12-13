@@ -144,9 +144,6 @@ export function Chat(props) {
                     <Button varient="success"> Send! </Button>
                 </div>
             )}
-            
-            
-            
         </div>
     )
 }

@@ -1,14 +1,14 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import {Button, ListGroup} from  'react-bootstrap';
+import { Sendrequest } from './reqest_book_popup';
 import { useHistory } from 'react-router-dom';
-
 import nobook from '../img/nobook.png';
 
 export function BookList() { 
     const [books, setBooks] =  useState([]);
-    // const []
-    console.log("we have been called");
+
+    const [selected, selectBook] =  useState();
 
 
     const history = useHistory();
@@ -90,6 +90,15 @@ export function BookList() {
         <div className="book-grid">
             <h1 className="header"> Books </h1>
             <h2 className="header">  Search </h2>
+            {selected ? (
+                <div> 
+                    <Sendrequest />
+                </div>
+            ) : (
+                <div> 
+
+                </div>
+            )}
             
             {bookGrid}
         </div>
