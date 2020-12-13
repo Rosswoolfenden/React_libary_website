@@ -180,8 +180,8 @@
 .msg_popup{
   position: fixed;
   z-index: 1;
-  width: 50%;
-  height: 20%;
+  width: 55%;
+  height: 12%;
   background-color: grey;
   justify-content: center;
 }

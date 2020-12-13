@@ -1,11 +1,13 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useContext} from 'react';
 import axios from 'axios';
 import {Button, ListGroup} from  'react-bootstrap';
 import { Sendrequest } from './reqest_book_popup';
 import { useHistory } from 'react-router-dom';
 import nobook from '../img/nobook.png';
+import { UserContext } from '../contexts/context';
 
 export function BookList() { 
+    const { auth } = useContext(UserContext)
     const [books, setBooks] =  useState([]);
 
     const [selected, selectBook] =  useState();
@@ -13,13 +15,11 @@ export function BookList() {
 
     const history = useHistory();
     const goToMsg = (book) => {
-        console.log("been called " + book);
-        let path = '/send';
-        history.push({
-            pathname: path,
-            Book: book
-        })
-        
+        if(!auth) {
+            alert('You need to sign in to complete this aciton');
+        } else {
+            selectBook(book);
+        }
     }
 
     useEffect(() => {
@@ -65,11 +65,22 @@ export function BookList() {
                                 {book.about}
                             </ListGroup.Item>
                             <ListGroup className="requestButton">
-                                <Button onClick={() => { goToMsg(book)} }>
-                                    Request Book
-                                </Button>
+                                
+                                {selected ? (
+                                    <div > 
+                                        <Sendrequest bookId={selected} close={selectBook} />
+                                    </div>
+                                ) : (
+                                    <div> 
+                                        <Button onClick={() => { goToMsg(book)} }>
+                                            Request Book
+                                        </Button>
+                                    </div>
+                                )}
                             </ListGroup>
+                            
                         </ListGroup>
+                        
                     </ListGroup.Item>
                 </ListGroup>
                 
@@ -82,7 +93,7 @@ export function BookList() {
     const bookGrid = books.map(book => {
         return(
             <div className="book-grid" >
-                    {listGroup(book)}
+                {listGroup(book)}
             </div>
         )
     });
@@ -90,16 +101,16 @@ export function BookList() {
         <div className="book-grid">
             <h1 className="header"> Books </h1>
             <h2 className="header">  Search </h2>
+{/*             
             {selected ? (
-                <div> 
+                <div > 
                     <Sendrequest />
                 </div>
             ) : (
                 <div> 
 
                 </div>
-            )}
-            
+            )} */}
             {bookGrid}
         </div>
     )
