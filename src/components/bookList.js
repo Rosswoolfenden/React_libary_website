@@ -2,7 +2,6 @@ import React, {useEffect, useState, useContext} from 'react';
 import axios from 'axios';
 import {Button, ListGroup} from  'react-bootstrap';
 import { Sendrequest } from './reqest_book_popup';
-import { useHistory } from 'react-router-dom';
 import nobook from '../img/nobook.png';
 import { UserContext } from '../contexts/context';
 
@@ -12,8 +11,6 @@ export function BookList() {
 
     const [selected, selectBook] =  useState();
 
-
-    const history = useHistory();
     const goToMsg = (book) => {
         if(!auth) {
             alert('You need to sign in to complete this aciton');

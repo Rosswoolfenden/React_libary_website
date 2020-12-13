@@ -10,9 +10,7 @@ import {Navigation} from './components/navigation';
 import {Register} from './components/register';
 import {AddBooks} from './components/addBook';
 import {Login} from './components/login';
-import {SendRequestMsg} from './components/sendRequestMsg';
 import {Messenger} from './components/messager';
-import {RequestMsgList} from './components/requestMsgList'
 
 
 import {BookList} from './components/bookList';
@@ -24,7 +22,6 @@ function App() {
   const [auth, setAuth] = useState({ID: 26, username: "ross", password: "qwerty", firstName: "Ross "});
   // const [auth, setAuth] = useState();
   const value = useMemo(() => ({auth, setAuth}), [auth, setAuth]);
-  console.log("VALUE PARESED IN IS " + value);
   return (
     <Router>
     <div>
@@ -37,8 +34,6 @@ function App() {
         <Route path="/addbook" component={AddBooks} />
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
-        <Route path='/send' component={SendRequestMsg} />
-        <Route path='/sent' component={RequestMsgList} />
         <Route path='/messenger' component={Messenger} />
       </UserContext.Provider>
     </div>
