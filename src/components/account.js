@@ -52,8 +52,9 @@ export function Account () {
         }).catch(e  => {
             console.log(e)
             alert('Failed to update profile');
-        })
-        
+        });
+        setCurbod();
+
     }
     // const logout =
     return (
