@@ -1,7 +1,7 @@
 import React, {useEffect, useState, useContext} from 'react';
 import axios from 'axios';
 import {Button, ListGroup} from  'react-bootstrap';
-import { Sendrequest } from './reqest_book_popup';
+import { useHistory } from 'react-router-dom';
 import nobook from '../img/nobook.png';
 import { UserContext } from '../contexts/context';
 
@@ -9,7 +9,7 @@ export function UserbookList() {
     const { auth } = useContext(UserContext)
     const [books, setBooks] =  useState([]);
 
-
+    const history = useHistory();
 
     useEffect(() => {
         axios({
@@ -24,7 +24,34 @@ export function UserbookList() {
             alert("Failed to get Book data");
             console.log(e);
         });
-    },[]);
+    },[auth.password, auth.username]);
+
+    const editBook =  async(book) => {
+        let path= '/update';
+        history.push({
+            pathname: path,
+            Book: book
+        })
+    }
+
+    const delbook = async(book) => {
+        const bookid = (book.ID).toString();
+        const url = 'http://localhost:9999/api/v1/books/' + bookid;
+        console.log(url);
+        
+        axios({
+            method: 'delete',
+            url: url,
+            headers : {
+                "Authorization": "Basic " + btoa(auth.username + ":" + auth.password),
+            }
+        }).then(res => {
+            alert("Succsefully deleted book");
+        }).catch(e => {
+            alert("Failed to delete book");
+        });
+        console.log(book);
+    }
 
     const bookPhoto = (img) => {
         if(!img) { 
@@ -59,8 +86,12 @@ export function UserbookList() {
                             </ListGroup.Item>
                             <ListGroup className="requestButton">
                                 <div> 
-                                    <Button onClick={() => { console.log("we been pressed")} }>
+                                    <Button onClick={() => {editBook(book)} }>
                                         Update Book
+                                    </Button>
+                                    -
+                                    <Button variant="danger" onClick={() => delbook(book)}>
+                                        Delete Book
                                     </Button>
                                 </div>
                             </ListGroup>

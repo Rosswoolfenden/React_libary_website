@@ -1,10 +1,10 @@
-import React, {useState, useContext} from 'react';
+import React, {useState, useContext, useEffect} from 'react';
 import axios from 'axios';
 import {UserContext} from '../contexts/context'
 import {Form, Col, Button} from 'react-bootstrap';
-import  { Redirect } from 'react-router-dom'
+import  { Redirect, useLocation } from 'react-router-dom'
 
-export function AddBooks(props) {
+export function UpdateBook(props) {
     const bookFeilds = {
         title: "",
         isbn: 0,
@@ -12,10 +12,17 @@ export function AddBooks(props) {
         about: ""
     };
     const { auth } = useContext(UserContext);
-
-    
-    const [book, setBook] = useState(bookFeilds);
+    const [book, setBook] = useState();
     const [posted, setPosted] = useState("not-posted-book");
+    const location =  useLocation();
+    useEffect(() => {
+        setBook(location.Book);
+        // book.isbn = location.book.isbn;
+        // book.genre = location.book.genre;
+        // book.about = location.book.about;
+        console.log("Book belwow");
+        console.log(book);
+    },[]);
 
     const handleChange = async(event) => {
         setBook({...book, [event.target.name]: event.target.value});
@@ -26,18 +33,17 @@ export function AddBooks(props) {
         
         setBook({...book, [event.target.name]: intValue});
     }
-    
+
     const submit = async() => {
         if(!auth) {
             alert("You need to be logged in to complete this aciton ");
             <Redirect to='/login'  />
         } else {
-            await addBookToDb(book);
+            // await addBookToDb(book);
         }
         
     }
     
-                // "Authorization": "Basic " + btoa(user.username + ":" + user.password),
     const addBookToDb = async(data)=> {
         axios({
             method: 'post',
@@ -61,7 +67,7 @@ export function AddBooks(props) {
     return (
         <div >
             <div className="App">
-                <h1>Add Books</h1>
+                <h1>Update Book</h1>
             </div>
             <div className={posted}>
                 <h2> Succesfully added Book!</h2>
@@ -108,7 +114,7 @@ export function AddBooks(props) {
                         </Col>
                     </Form.Row>
                 </Form.Group>
-                <Button size="lg" onClick={submit} > Add Book! </Button>
+                <Button size="lg" onClick={submit} > Update Book! </Button>
                 </Form>
             </div>
         </div>

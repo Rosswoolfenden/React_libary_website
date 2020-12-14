@@ -6,12 +6,13 @@ import {
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Navigation} from './components/navigation';
-// import {BookList} from './components/bookList';
+import { Account } from './components/account';
 import {Register} from './components/register';
 import {AddBooks} from './components/addBook';
 import {Login} from './components/login';
 import {Messenger} from './components/messager';
 import {UserbookList} from './components/userBookList';
+import { UpdateBook } from './components/updateBooks';
 
 import {BookList} from './components/bookList';
 
@@ -36,6 +37,7 @@ function App() {
         <Route path="/register" component={Register} />
         <Route path='/messenger' component={Messenger} />
         <Route path= '/updatebook' component={UserbookList} />
+        <Route path='/update' component={UpdateBook} />
       </UserContext.Provider>
     </div>
   </Router>
