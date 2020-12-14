@@ -48,7 +48,7 @@ export function Account () {
             }
         }).then(res=>{
             console.log("Succesfully updated profile");
-            alert("Succesfully updated profile")
+            alert("Succesfully updated profile");
         }).catch(e  => {
             console.log(e)
             alert('Failed to update profile');
