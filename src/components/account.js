@@ -18,10 +18,21 @@ export function Account () {
         <Redirect to='/login'  />
     }
     const deleteAcount = async(event) => {
+        const url = 'http://localhost:9999/api/v1/users/' + (auth.ID).toString();
         Axios({
             method: 'delete',
-            
+            url: 'url',
+            headers : {
+                "Authorization": "Basic " + btoa(auth.username + ":" + auth.password),
+            }
+        }).then(res => {
+            console.log(res);
+            alert("Succesfully deleted account ");
+        }).catch(e => {
+            console.log(e);
+            alert("Failed to delete account");
         })
+        alert("Succesfully deleted account ");
         setAuth();
 
     }
