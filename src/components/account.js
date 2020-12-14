@@ -1,16 +1,28 @@
 import React, {useEffect, useState, useContext} from 'react';
-import { Chat } from './chat';
-import { Chatlist } from './chatlist';
 import { UserContext } from '../contexts/context';
-
+import {Form, Col, Button, InputGroup } from 'react-bootstrap';
 export function Account () { 
 
     const { auth } =  useContext(UserContext);
+    const [curbod, setCurbod] = useState();
 
-
+    // const logout =
     return (
         <div>
-            <h1> Welcome {auth.firstName}</h1>
+            <div>
+                <h1 className="header"> Welcome {auth.firstName}</h1>
+            </div>
+                {curbod ? (
+                    <Button> Log in</Button>
+                    
+                ) : (
+                    <div className="Accountbody">
+
+                    <Button className="logout"> logout </Button>
+                    <Button> Update  user </Button>
+                    </ div>
+                )}
+
         </div>
     )
 }

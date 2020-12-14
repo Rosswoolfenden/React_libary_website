@@ -38,6 +38,7 @@ function App() {
         <Route path='/messenger' component={Messenger} />
         <Route path= '/updatebook' component={UserbookList} />
         <Route path='/update' component={UpdateBook} />
+        <Route path='/account' component={Account} />
       </UserContext.Provider>
     </div>
   </Router>
