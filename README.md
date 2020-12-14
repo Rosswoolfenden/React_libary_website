@@ -1,11 +1,10 @@
-# Getting Started with Create React App
+Front end project for 304 coursework - public libary
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## TO RUN
 
-## Available Scripts
+### `npm i` to install all dependencies
 
-In the project directory, you can run:
-
+then 
 ### `npm start`
 
 Runs the app in the development mode.\
