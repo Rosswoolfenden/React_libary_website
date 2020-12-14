@@ -37,6 +37,24 @@ export function Account () {
 
     }
     
+    const updateAccount = async(event) => {
+        const url = 'http://localhost:9999/api/v1/users/' + (auth.ID).toString();
+        Axios({
+            method: 'put',
+            url: url,
+            data: user,
+            headers :{
+                "Authorization": "Basic " + btoa(auth.username + ":" + auth.password),
+            }
+        }).then(res=>{
+            console.log("Succesfully updated profile");
+            alert("Succesfully updated profile")
+        }).catch(e  => {
+            console.log(e)
+            alert('Failed to update profile');
+        })
+        
+    }
     // const logout =
     return (
         <div>
