@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import axios from 'axios';
+import  { Redirect } from 'react-router-dom';
 
 import {Form, Col, Button, InputGroup } from 'react-bootstrap';
 
@@ -39,6 +40,7 @@ export function Register() {
             console.log(res);
             alert("Succesfully added user!");
             setPosted("posted-book");
+            <Redirect to='/login'  />
         }).catch((e) => {
             if(e.response.status === 409) {
                 alert("Username already exists, please choose a new one");
@@ -51,11 +53,13 @@ export function Register() {
 
     return (
         <div >
+            
             <div className="App">
                 <h1>Register User</h1>
             </div>
             <div className={posted}>
-                <h2> Username already exists, Choose a differnt one please </h2>
+                <h2> Succesfully registerd </h2>
+
             </div>
             <div className="Book-Form">
                 <Form >
@@ -117,7 +121,7 @@ export function Register() {
                             </Col>
                         </Form.Row>
                     </Form.Group>
-                    <Button size="lg" onClick={submit} > Add Book! </Button>
+                    <Button size="lg" onClick={submit} > Register </Button>
                 </Form>
             </div>
         </div>

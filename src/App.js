@@ -20,7 +20,7 @@ import {UserContext} from './contexts/context';
 
 function App() {
 
-  const [auth, setAuth] = useState({ID: 26, username: "ross", password: "qwerty", firstName: "Ross "});
+  const [auth, setAuth] = useState();
   // const [auth, setAuth] = useState();
   const value = useMemo(() => ({auth, setAuth}), [auth, setAuth]);
   return (

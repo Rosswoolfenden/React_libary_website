@@ -91,8 +91,26 @@ export function Chat(props) {
           
 
         }
-    },[auth.ID, auth.password, auth.username, props.chat]);
+    },[auth.ID, auth.password, auth.username, props, props.chat]);
 
+    
+    const acceptReq = async() => {
+        axios({
+            method: 'post',
+            url: 'http://localhost:9999/api/v1/requests/accept',
+            data: {
+                bookId: details.bookId
+            },
+            headers: {
+                "Authorization": "Basic " + btoa(auth.username + ":" + auth.password),
+            }
+        }).then(res => {
+            alert("Set to on loan")
+        }).catch(e => {
+            console.log(e);
+            alert("Failed to set as on lona")
+        })
+    }
     const messageList = msgs.map(msg => {
         return (
             <ListGroup.Item variant="secondary" >
@@ -119,7 +137,9 @@ export function Chat(props) {
                 <div className="topbarchat">
 
                     <h1 className="chathead"> Chat </h1>
+                    <Button varient="success" onClick={acceptReq}> Mark as on lonad</Button>
                     <Button className="chattopbutton" varient="secondary" onClick={() => {showAdress(true)}} > Get user info </Button>
+                    
                 </div>
             ) : (
                 <h1 className="header"> Chat </h1>

@@ -20,9 +20,6 @@ export function Navigation() {
                 <Nav.Link href="/updatebook">
                     <Link to="/updatebook" className="nav-link"> Your Books </Link>
                 </Nav.Link>
-                <Nav.Link href="/sent">
-                    <Link to="/sent" className="nav-link"> Sent </Link>
-                </Nav.Link>
                 <Nav.Link href="/messenger">
                     <Link to="/messenger" className="nav-link"> Chat </Link>
                 </Nav.Link>
