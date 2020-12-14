@@ -47,7 +47,7 @@ export function Account () {
                 "Authorization": "Basic " + btoa(auth.username + ":" + auth.password),
             }
         }).then(res=>{
-            console.log("Succesfully updated profile");
+            console.log(res);
             alert("Succesfully updated profile");
         }).catch(e  => {
             console.log(e)
@@ -133,7 +133,7 @@ export function Account () {
                             </Col>
                         </Form.Row>
                     </Form.Group>
-                    <Button size="lg"  > Add Book! </Button>
+                    <Button size="lg" onCLick={updateAccount} > update Book! </Button>
                     <Button size="lg" onClick={() => setCurbod()}> Cancel </Button>
                 </Form>
             </div>
