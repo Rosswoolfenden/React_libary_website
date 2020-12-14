@@ -4,10 +4,14 @@ import {Button, ListGroup} from  'react-bootstrap';
 import { Sendrequest } from './reqest_book_popup';
 import nobook from '../img/nobook.png';
 import { UserContext } from '../contexts/context';
+import CsvDownloader from 'react-csv-downloader';
+import {parse} from 'json2csv';
 
 export function BookList() { 
     const { auth } = useContext(UserContext)
     const [books, setBooks] =  useState([]);
+    const [csvData, setCsvData] = useState([]);
+    
 
     const [selected, selectBook] =  useState();
 
@@ -18,17 +22,19 @@ export function BookList() {
             selectBook(book);
         }
     }
-
+    
     useEffect(() => {
         axios.get('http://localhost:9999/api/v1/books')
             .then(res => {
                setBooks(res.data);
+               setCsvData(res.data);
             })
             .catch(e => {
                 alert("Failed to get Book data");
                 console.log(e);
             });
     },[]);
+
 
     const bookPhoto = (img) => {
         if(!img) { 
@@ -85,8 +91,6 @@ export function BookList() {
         );
     }
     
-
-
     const bookGrid = books.map(book => {
         return(
             <div className="book-grid" >
@@ -95,9 +99,13 @@ export function BookList() {
         )
     });
     return (
-        <div className="book-grid">
+        <div className="book-grid"> 
             <h1 className="header"> Books </h1>
             <h2 className="header">  Search </h2>
+            <CsvDownloader datas={books}>
+                <Button>  Download CSV of books </Button>
+            </CsvDownloader>
+            
 {/*             
             {selected ? (
                 <div > 
